@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import ReactMarkdown from 'react-markdown';
 
 interface Draft {
   title: string;
@@ -19,6 +20,24 @@ interface ConversationItem {
   draft?: Draft;
   metadata?: Metadata;
 }
+
+// Markdown component styles for consistent formatting
+const markdownComponents = {
+  h1: ({ node, ...props }: any) => <h1 style={{ fontSize: '24px', fontWeight: 600, marginTop: '24px', marginBottom: '12px', color: '#111827' }} {...props} />,
+  h2: ({ node, ...props }: any) => <h2 style={{ fontSize: '20px', fontWeight: 600, marginTop: '20px', marginBottom: '10px', color: '#111827' }} {...props} />,
+  h3: ({ node, ...props }: any) => <h3 style={{ fontSize: '18px', fontWeight: 600, marginTop: '18px', marginBottom: '8px', color: '#111827' }} {...props} />,
+  h4: ({ node, ...props }: any) => <h4 style={{ fontSize: '16px', fontWeight: 600, marginTop: '16px', marginBottom: '8px', color: '#111827' }} {...props} />,
+  p: ({ node, ...props }: any) => <p style={{ marginBottom: '12px', marginTop: 0 }} {...props} />,
+  ul: ({ node, ...props }: any) => <ul style={{ marginBottom: '12px', marginTop: '8px', paddingLeft: '24px' }} {...props} />,
+  ol: ({ node, ...props }: any) => <ol style={{ marginBottom: '12px', marginTop: '8px', paddingLeft: '24px' }} {...props} />,
+  li: ({ node, ...props }: any) => <li style={{ marginBottom: '6px' }} {...props} />,
+  strong: ({ node, ...props }: any) => <strong style={{ fontWeight: 600, color: '#111827' }} {...props} />,
+  em: ({ node, ...props }: any) => <em style={{ fontStyle: 'italic' }} {...props} />,
+  code: ({ node, ...props }: any) => <code style={{ backgroundColor: '#f3f4f6', padding: '2px 6px', borderRadius: '4px', fontSize: '14px', fontFamily: 'monospace' }} {...props} />,
+  pre: ({ node, ...props }: any) => <pre style={{ backgroundColor: '#f3f4f6', padding: '12px', borderRadius: '8px', overflow: 'auto', marginBottom: '12px' }} {...props} />,
+  blockquote: ({ node, ...props }: any) => <blockquote style={{ borderLeft: '4px solid #e5e7eb', paddingLeft: '16px', marginLeft: 0, marginBottom: '12px', color: '#6b7280' }} {...props} />,
+  hr: ({ node, ...props }: any) => <hr style={{ border: 'none', borderTop: '1px solid #e5e7eb', margin: '20px 0' }} {...props} />,
+};
 
 function App() {
   const [message, setMessage] = useState('');
@@ -87,7 +106,12 @@ function App() {
     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', fontFamily: 'system-ui, sans-serif' }}>
       {/* Header */}
       <div style={{ padding: '16px 24px', borderBottom: '1px solid #e5e7eb', backgroundColor: 'white' }}>
-        <h1 style={{ fontSize: '20px', margin: 0, color: '#1f2937' }}>Cerina Foundry</h1>
+        <h1
+          onClick={() => window.location.reload()}
+          style={{ fontSize: '20px', margin: 0, color: '#1f2937', cursor: 'pointer', userSelect: 'none' }}
+        >
+          Cerina Foundry
+        </h1>
       </div>
 
       {/* Chat Area */}
@@ -104,7 +128,7 @@ function App() {
             <div key={idx} style={{ marginBottom: '32px' }}>
               {item.type === 'user' ? (
                 <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                  <div style={{ backgroundColor: '#f3f4f6', borderRadius: '16px', padding: '12px 20px', maxWidth: '600px' }}>
+                  <div style={{ backgroundColor: '#f3f4f6', borderRadius: '9999px', padding: '12px 20px', maxWidth: '600px' }}>
                     <p style={{ margin: 0, color: '#1f2937' }}>{item.content}</p>
                   </div>
                 </div>
@@ -125,12 +149,16 @@ function App() {
                         </div>
                       )}
 
-                      <div style={{ color: '#374151', fontSize: '15px', lineHeight: '1.7', whiteSpace: 'pre-wrap', marginBottom: '16px' }}>
-                        {item.draft.instructions}
+                      <div style={{ color: '#374151', fontSize: '15px', lineHeight: '1.7', marginBottom: '16px' }}>
+                        <ReactMarkdown components={markdownComponents}>
+                          {item.draft.instructions}
+                        </ReactMarkdown>
                       </div>
 
-                      <div style={{ color: '#374151', fontSize: '15px', lineHeight: '1.7', whiteSpace: 'pre-wrap' }}>
-                        {item.draft.content}
+                      <div style={{ color: '#374151', fontSize: '15px', lineHeight: '1.7' }}>
+                        <ReactMarkdown components={markdownComponents}>
+                          {item.draft.content}
+                        </ReactMarkdown>
                       </div>
                     </div>
                   ) : (
@@ -180,3 +208,4 @@ function App() {
 }
 
 export default App;
+

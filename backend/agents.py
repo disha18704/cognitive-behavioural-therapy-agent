@@ -4,9 +4,62 @@ from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
 from backend.state import AgentState
 from backend.models import ExerciseDraft, Critique, SupervisorDecision, AgentNote, DraftVersion, ReviewMetadata
 from backend.prompts import DRAFTER_PROMPT, SAFETY_PROMPT, CLINICAL_PROMPT, SUPERVISOR_PROMPT
+from pydantic import BaseModel
 
 def get_llm():
     return ChatOpenAI(model="gpt-4o", temperature=0.2)
+
+class IntentClassification(BaseModel):
+    intent: str
+    reasoning: str
+
+def intent_router_node(state: AgentState):
+    messages = state["messages"]
+    last_message = messages[-1].content if messages else ""
+    
+    classification_prompt = """You are an intent classifier. Determine if the user wants:
+- "cbt_exercise" - CBT exercise, therapy help, mental health support, or psychological assistance
+- "chat" - Normal chat, greetings, general questions, or small talk
+
+Examples:
+"hey" → chat
+"hello" → chat  
+"I need help with anxiety" → cbt_exercise
+"create a CBT exercise" → cbt_exercise
+
+User message: "{message}"
+
+Classify the intent."""
+
+    llm = get_llm()
+    structured_llm = llm.with_structured_output(IntentClassification)
+    
+    result = structured_llm.invoke([
+        SystemMessage(content=classification_prompt.format(message=last_message))
+    ])
+    
+    return {
+        "next_worker": result.intent,
+        "metadata": state.get("metadata", ReviewMetadata())
+    }
+
+def chat_response_node(state: AgentState):
+    messages = state["messages"]
+    
+    chat_prompt = """You are Cerina Foundry, a friendly AI assistant specializing in CBT exercises.
+
+For normal conversation, respond helpfully and let users know you can create personalized CBT exercises for mental health challenges like anxiety, depression, and procrastination.
+
+Keep responses concise and friendly."""
+
+    llm = get_llm()
+    response = llm.invoke([SystemMessage(content=chat_prompt)] + messages)
+    
+    return {
+        "messages": [response],
+        "next_worker": "end",
+        "metadata": state.get("metadata", ReviewMetadata())
+    }
 
 def drafter_node(state: AgentState):
     messages = [SystemMessage(content=DRAFTER_PROMPT)] + state["messages"]
