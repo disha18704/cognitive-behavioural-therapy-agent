@@ -21,7 +21,7 @@ Cerina Foundry is a team of AI experts working together:
 ## Quick Start
 
 ### Prerequisites
-- Python 3.11
+- Python 3.14
 - Node.js 20+
 - OpenAI API Key
 
