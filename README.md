@@ -9,6 +9,10 @@ Clarity CBT is a team of AI experts working together:
 - **Supervisor** - Orchestrates the collaboration
 - **Intent Router** - Handles both casual chat and therapy requests
 
+<p align="center">
+  <img src="./docs/images/app_screenshot.jpg" alt="Clarity CBT Screenshot" width="800">
+</p>
+
 ## Key Features
 
 - **Smart Chat Routing** - Casual greetings → friendly chat, therapy requests → CBT workflow
