@@ -177,6 +177,4 @@ Check `.env` file has `OPENAI_API_KEY=...`
 - **MCP** - Claude Desktop integration
 - **SQLite** - State persistence
 
----
 
-**Ready to see AI agents collaborate?** Start with the Quick Start guide above!
