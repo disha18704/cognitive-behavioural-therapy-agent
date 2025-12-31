@@ -48,7 +48,7 @@ Your role is to review drafts for:
 If good, approve it. If not, provide specific feedback.
 """
 
-SUPERVISOR_PROMPT = """You are the Manager of the Cerina Protocol Foundry.
+SUPERVISOR_PROMPT = """You are the Manager of Clarity CBT.
 You manage a team:
 - 'drafter': Creates and revises content.
 - 'safety_guardian': Checks for safety risks.

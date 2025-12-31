@@ -2,7 +2,7 @@
 
 ## What is This?
 
-This MCP (Model Context Protocol) server exposes the Cerina Protocol Foundry multi-agent workflow as a tool that Claude Desktop can use directly.
+This MCP (Model Context Protocol) server exposes the Clarity CBT multi-agent workflow as a tool that Claude Desktop can use directly.
 
 ## Installation
 
@@ -23,10 +23,10 @@ This MCP (Model Context Protocol) server exposes the Cerina Protocol Foundry mul
 ```json
 {
   "mcpServers": {
-    "cerina-foundry": {
+    "clarity-cbt": {
       "command": "/usr/local/bin/python3.11",
       "args": [
-        "/Users/dishaarora/Desktop/cerina-health-assignment/mcp_server.py"
+        "/Users/dishaarora/cognitive-behavioural-therapy-agent/mcp/mcp_server.py"
       ],
       "env": {
         "OPENAI_API_KEY": "your-key-here"
@@ -45,14 +45,14 @@ This MCP (Model Context Protocol) server exposes the Cerina Protocol Foundry mul
 
 1. Restart Claude Desktop
 2. Look for the 🔌 icon in Claude Desktop (shows MCP servers)
-3. You should see "cerina-foundry" connected
+3. You should see "clarity-cbt" connected
 
 ## Usage
 
 ### In Claude Desktop Chat:
 
 ```
-You: "I'm struggling with social anxiety. Can you use Cerina Foundry to create a CBT exercise?"
+You: "I'm struggling with social anxiety. Can you use Clarity CBT to create a CBT exercise?"
 
 Claude: [Uses create_cbt_exercise tool]
         [Multi-agent collaboration happens]
@@ -65,16 +65,16 @@ Claude: [Uses create_cbt_exercise tool]
 
 ### Example Prompts:
 
-- "Use Cerina Foundry to create a sleep hygiene protocol"
-- "I need help with perfectionism - ask Cerina Foundry"
-- "Create a CBT exercise for managing work stress using the Cerina tool"
+- "Use Clarity CBT to create a sleep hygiene protocol"
+- "I need help with perfectionism - ask Clarity CBT"
+- "Create a CBT exercise for managing work stress using the Clarity tool"
 
 ## Testing Manually
 
 You can also test the MCP server directly:
 
 ```bash
-cd /Users/dishaarora/Desktop/cerina-health-assignment
+cd /Users/dishaarora/cognitive-behavioural-therapy-agent
 /usr/local/bin/python3.11 mcp_server.py
 ```
 
@@ -139,7 +139,7 @@ User
 Show this flow:
 1. Open Claude Desktop
 2. Show the tool is connected (🔌 icon)
-3. Type: "Use Cerina Foundry to create an exercise for public speaking anxiety"
+3. Type: "Use Clarity CBT to create an exercise for public speaking anxiety"
 4. Show Claude calling the tool
 5. Show the final exercise appearing
 6. Compare with React dashboard version

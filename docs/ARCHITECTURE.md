@@ -1,4 +1,4 @@
-# Cerina Protocol Foundry - Architecture Diagram
+# Clarity CBT - Architecture Diagram
 
 ```mermaid
 graph TB

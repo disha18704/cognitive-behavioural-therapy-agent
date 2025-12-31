@@ -1,8 +1,8 @@
-# Cerina Protocol Foundry
+# Clarity CBT
 
 **An intelligent multi-agent system that autonomously designs, critiques, and refines CBT (Cognitive Behavioral Therapy) exercises.**
 
-Cerina Foundry is a team of AI experts working together:
+Clarity CBT is a team of AI experts working together:
 - **Drafter** - Creates and revises CBT exercises
 - **Safety Guardian** - Reviews for medical safety
 - **Clinical Critic** - Validates empathy and clinical quality  
@@ -71,7 +71,7 @@ cd frontend && npm run dev
 ## Project Structure
 
 ```
-cerina-health-assignment/
+cognitive-behavioural-therapy-agent/
 ├── backend/
 │   ├── agents.py      # Intent router & agent implementations
 │   ├── graph.py       # LangGraph workflow with routing
@@ -82,7 +82,7 @@ cerina-health-assignment/
 │
 ├── frontend/
 │   └── src/
-│       └── App.tsx    # React UI (Gemini-style clean design)
+│       └── App.tsx    # React UI (Clean design)
 │
 ├── mcp/
 │   └── mcp_server.py  # MCP server for Claude Desktop
@@ -123,7 +123,7 @@ Expose the workflow as a tool for Claude Desktop. See **[docs/README_MCP.md](doc
 **Quick setup:**
 1. Install: `pip install mcp`
 2. Configure Claude Desktop config
-3. Use in Claude: "Use Cerina Foundry to create a CBT exercise for social anxiety"
+3. Use in Claude: "Use Clarity CBT to create a CBT exercise for social anxiety"
 
 ## API Endpoints
 
@@ -143,9 +143,9 @@ Expose the workflow as a tool for Claude Desktop. See **[docs/README_MCP.md](doc
 - **Smart Intent Routing** - LLM-powered classification (chat vs therapy)  
 - **Multi-Agent Collaboration** - Self-correcting review cycles  
 - **Persistent State** - SQLite checkpointing for crash recovery  
-- **Clean UI** - Gemini-inspired minimalist design  
-- **Streaming SSE** - Real-time agent activity  
-- **MCP Integration** - Works with Claude Desktop  
+- **Clean UI** - Minimalist design
+- **Streaming SSE** - Real-time agent activity
+- **MCP Integration** - Works with Claude Desktop
 
 ## Troubleshooting
 

@@ -1,5 +1,5 @@
 """
-MCP Server for Cerina Protocol Foundry
+MCP Server for Clarity CBT
 Exposes the multi-agent CBT workflow as an MCP tool for Claude Desktop
 """
 import asyncio
@@ -19,7 +19,7 @@ from langchain_core.messages import HumanMessage
 load_dotenv()
 
 # Initialize MCP server
-server = Server("cerina-foundry")
+server = Server("clarity-cbt")
 
 @server.list_tools()
 async def handle_list_tools() -> list[Tool]:
@@ -124,7 +124,7 @@ async def handle_call_tool(name: str, arguments: dict) -> list[TextContent | Ima
         
         # Add metadata summary at the top
         summary = f"""
-🧠 **Cerina Protocol Foundry**
+🧠 **Clarity CBT**
 Multi-Agent CBT Exercise Generation System
 
 **Your Request:** {request}
@@ -163,7 +163,7 @@ async def main():
             read_stream,
             write_stream,
             InitializationOptions(
-                server_name="cerina-foundry",
+                server_name="clarity-cbt",
                 server_version="1.0.0",
                 capabilities=server.get_capabilities(
                     notification_options=NotificationOptions(),

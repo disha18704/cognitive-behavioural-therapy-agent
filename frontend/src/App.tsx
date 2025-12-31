@@ -518,7 +518,7 @@ function App() {
           onClick={() => window.location.reload()}
           style={{ fontSize: '20px', margin: 0, color: '#1f2937', cursor: 'pointer', userSelect: 'none' }}
         >
-          Cerina Foundry
+          Clarity CBT
         </h1>
       </div>
 
@@ -800,7 +800,7 @@ function App() {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-            placeholder="Ask Cerina Foundry"
+            placeholder="Ask Clarity CBT"
             disabled={isProcessing}
             style={{ flex: 1, border: 'none', backgroundColor: 'transparent', outline: 'none', fontSize: '15px', color: '#1f2937' }}
           />
@@ -813,7 +813,7 @@ function App() {
           </button>
         </div>
         <p style={{ textAlign: 'center', fontSize: '12px', color: '#9ca3af', marginTop: '12px' }}>
-          Cerina Foundry uses AI agents. Verify important information.
+          Clarity CBT uses AI agents. Verify important information.
         </p>
       </div>
     </div>

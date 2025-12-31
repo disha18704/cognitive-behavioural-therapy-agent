@@ -27,7 +27,7 @@ async def lifespan(app: FastAPI):
         yield
 
 
-app = FastAPI(title="Cerina Protocol Foundry API", lifespan=lifespan)
+app = FastAPI(title="Clarity CBT API", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
@@ -307,7 +307,7 @@ async def save_draft(data: SaveDraftData):
 async def root():
     """API root endpoint"""
     return {
-        "message": "Cerina Protocol Foundry API",
+        "message": "Clarity CBT API",
         "endpoints": {
             "POST /stream": "Stream workflow execution",
             "GET /state/{thread_id}": "Get current state",

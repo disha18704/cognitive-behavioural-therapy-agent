@@ -237,7 +237,7 @@ Think carefully. What is the intent?"""
 def chat_response_node(state: AgentState):
     messages = state["messages"]
     
-    chat_prompt = """You are Cerina Foundry, a friendly AI assistant specializing in CBT exercises.
+    chat_prompt = """You are Clarity CBT, a friendly AI assistant specializing in CBT exercises.
 
 For normal conversation, respond helpfully and let users know you can create personalized CBT exercises for mental health challenges like anxiety, depression, and procrastination.
 
